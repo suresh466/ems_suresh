@@ -1,6 +1,6 @@
 const HelloWorld = () => (
     <div title="outer-div">
-        <h1>Hello, World! dynamically from different file</h1>
+        <h1>Hello, World! dynamically from different file (changed)</h1>
     </div>
     );
 
