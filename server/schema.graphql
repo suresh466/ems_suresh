@@ -1,0 +1,55 @@
+scalar GraphQLDate
+
+type Employee {
+    _id: ID!
+    id: Int!
+    firstName: String!
+    lastName: String!
+    age: Int
+    dateOfJoining: GraphQLDate
+    title: TitleType
+    department: DepartmentType
+    employeeType: EmployeeTypeType
+    currentStatus: Bool
+}
+
+input EmployeeInputs {
+    firstName: String!
+    lastName: String!
+    age: Int
+    dateOfJoining: GraphQLDate
+    title: TitleType
+    department: DepartmentType
+    employeeType: EmployeeTypeType
+    currentStatus: Bool = true
+}
+
+enum TitleType {
+    Employee
+    Manager
+    Director
+    VP
+}
+
+enum DepartmentType {
+    IT
+    Marketing
+    HR
+    Engineering
+}
+
+"allowed types for employeeType field, hence EmployeeTypeType. Name is a bit confusing"
+enum EmployeeTypeType {
+    FullTime
+    PartTime
+    Contract
+    Seasonal
+}
+
+type Query {
+    employeeList: [Employee!]!
+}
+
+type Mutation {
+    employeeCreate(employee: EmployeeInputs): Employee!
+}
