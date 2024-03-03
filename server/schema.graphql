@@ -10,7 +10,7 @@ type Employee {
     title: TitleType
     department: DepartmentType
     employeeType: EmployeeTypeType
-    currentStatus: Bool
+    currentStatus: Boolean
 }
 
 input EmployeeInputs {
@@ -21,7 +21,7 @@ input EmployeeInputs {
     title: TitleType
     department: DepartmentType
     employeeType: EmployeeTypeType
-    currentStatus: Bool = true
+    currentStatus: Boolean = true
 }
 
 enum TitleType {

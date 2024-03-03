@@ -14,11 +14,11 @@ db.employees.deleteMany({});
 const employeesDB = [
     {
         id: 1, firstName: 'Suresh', lastName: 'Thagunna', age: 25, dateOfJoining: new Date(), title: 'Manager',
-        department: 'IT', EmployeeType: "FullTime", currentStatus: "True",
+        department: 'IT', employeeType: "FullTime", currentStatus: true,
     },
     {
         id: 2, firstName: 'Deepak', lastName: 'Singh', age: 23, dateOfJoining: new Date(), title: 'VP',
-        department: 'IT', EmployeeType: "PartTime", currentStatus: "True",
+        department: 'IT', employeeType: "PartTime", currentStatus: false,
     },
     ];
 
