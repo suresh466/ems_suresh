@@ -86,9 +86,9 @@ class EmployeeCreate extends React.Component {
                     <label htmlFor="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" />
                     <label htmlFor="age">Age:</label>
-                    <input type="text" id="age" name="age" />
+                    <input type="text" id="age" name="age" required />
                     <label htmlFor="dateOfJoining">Date Of Joining:</label>
-                    <input type="date" id="dateOfJoining" name="dateOfJoining" />
+                    <input type="date" id="dateOfJoining" name="dateOfJoining" required />
                     <label htmlFor="title">Title:</label>
                     <select name="title" id="title">
                         <option value="Employee">Employee</option>

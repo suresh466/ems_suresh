@@ -17,7 +17,7 @@ const employeesDB = [
         department: 'IT', employeeType: "FullTime", currentStatus: true,
     },
     {
-        id: 2, firstName: 'Deepak', lastName: 'Singh', age: 23, dateOfJoining: new Date(), title: 'VP',
+        id: 2, firstName: 'Deepak', lastName: 'Thagunna', age: 23, dateOfJoining: new Date(), title: 'VP',
         department: 'IT', employeeType: "PartTime", currentStatus: false,
     },
     ];

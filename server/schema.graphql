@@ -6,7 +6,7 @@ type Employee {
     firstName: String!
     lastName: String!
     age: Int!
-    dateOfJoining: GraphQLDate
+    dateOfJoining: GraphQLDate!
     title: TitleType!
     department: DepartmentType!
     employeeType: EmployeeTypeType!
@@ -17,7 +17,7 @@ input EmployeeInputs {
     firstName: String!
     lastName: String!
     age: Int!
-    dateOfJoining: GraphQLDate
+    dateOfJoining: GraphQLDate!
     title: TitleType!
     department: DepartmentType!
     employeeType: EmployeeTypeType!

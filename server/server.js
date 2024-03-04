@@ -39,7 +39,6 @@ const resolvers = {
 
 async function employeeCreate(_, { employee }) {
   employeeValidate(employee);
-  employee.created = new Date();
   
   employee.id = await getNextSequence('employees');
 
@@ -73,13 +72,13 @@ async function getNextSequence(name) {
 function employeeValidate(employee) {
   const errors = [];
   if (employee.firstName === '') {
-    errors.push('firstName is required.');
+    errors.push('FirstName is required.');
   }
   if (employee.lastName === '') {
-    errors.push('lastName is required.');
+    errors.push('LastName is required.');
   }
   if (employee.age < 20 || employee.age > 70) {
-    errors.push('age must be between 20 and 70.');
+    errors.push('Age must be a Number between 20 and 70.');
   }
   // validation of Title, Department, EmployeeType, CurrentStatus is done using emus in graphql schema
   if (errors.length > 0) {
