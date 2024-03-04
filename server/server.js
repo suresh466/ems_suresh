@@ -73,14 +73,15 @@ async function getNextSequence(name) {
 function employeeValidate(employee) {
   const errors = [];
   if (employee.firstName === '') {
-    errors.push('Field "firstName" is required.');
+    errors.push('firstName is required.');
   }
   if (employee.lastName === '') {
-    errors.push('Field "lastName" is required.');
+    errors.push('lastName is required.');
   }
-  // if (issue.status == 'Assigned' && !issue.owner) {
-  //   errors.push('Field "owner" is required when status is "Assigned"');
-  // }
+  if (employee.age < 20 || employee.age > 70) {
+    errors.push('age must be between 20 and 70.');
+  }
+  // validation of Title, Department, EmployeeType, CurrentStatus is done using emus in graphql schema
   if (errors.length > 0) {
     throw new UserInputError('Invalid input(s)', { errors });
   }

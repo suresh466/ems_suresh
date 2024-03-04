@@ -17,7 +17,7 @@ async function graphQLFetch(query, variables = {}) {
       if (result.errors) {
         const error = result.errors[0];
         if (error.extensions.code == 'BAD_USER_INPUT') {
-          const details = error.extensions.exception.errors.join('\n ');
+          const details = error.extensions.errors.join('\n ');
           alert(`${error.message}:\n ${details}`);
         } else {
           alert(`${error.extensions.code}: ${error.message}`);
@@ -51,7 +51,7 @@ function EmployeeRow(props) {
             <td>{employee.title}</td>
             <td>{employee.department}</td>
             <td>{employee.employeeType}</td>
-            <td>{employee.currentStatus? '1 (Active)' : '0 (Inactive)'}</td>
+            <td>{employee.currentStatus? '1' : '0'}</td>
         </tr>
     );
 }
@@ -66,16 +66,14 @@ class EmployeeCreate extends React.Component {
         e.preventDefault();
         const form = document.forms.employeeCreate;
         const employee = {
-            firstName: form.firstName.value, lastName: form.lastName.value,
+            firstName: form.firstName.value.trim(), lastName: form.lastName.value.trim(),
             age: parseInt(form.age.value), dateOfJoining: form.dateOfJoining.value,
             title: form.title.value, department: form.department.value,
             employeeType: form.employeeType.value,
         }
         
         this.props.createEmployee(employee);
-        form.firstName.value = ""; form.lastName.value = ""; form.age.value = "";
-        form.dateOfJoining.value = ""; form.title.value = ""; form.department.value = "";
-        form.employeeType.value = "";
+        form.reset();
     }
     
     render() {
@@ -90,11 +88,26 @@ class EmployeeCreate extends React.Component {
                 <label htmlFor="dateOfJoining">Date Of Joining:</label>
                 <input type="date" id="dateOfJoining" name="dateOfJoining" />
                 <label htmlFor="title">Title:</label>
-                <input type="text" id="title" name="title" />
+                <select name="title" id="title">
+                    <option value="Employee">Employee</option>
+                    <option value="Manager">Manager</option>
+                    <option value="Director">Director</option>
+                    <option value="VP">VP</option>
+                </select>
                 <label htmlFor="department">Department:</label>
-                <input type="text" id="department" name="department" />
-                <label htmlFor="employeeType">Employee Type:</label>
-                <input type="text" id="employeeType" name="employeeType" />
+                <select name="department" id="department">
+                    <option value="IT">IT</option>
+                    <option value="HR">HR</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Engineering">Engineering</option>
+                </select>
+                <label htmlFor="employeeType">employeeType:</label>
+                <select name="employeeType" id="employeeType">
+                    <option value="FullTime">FullTime</option>
+                    <option value="PartTime">PartTime</option>
+                    <option value="Contract">Contract</option>
+                    <option value="Seasonal">Seasonal</option>
+                </select>
                 <input type="submit" value="Add" />
             </form>
         );
