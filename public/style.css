@@ -1,3 +1,70 @@
 body {
-    font: 14px helvetica, arial, sans-serif;
+    font: 16px Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+#content {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+    margin: auto;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+.employee-section {
+    margin-bottom: 20px;
+}
+
+.employee-section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.employee-section input[type="text"], 
+.employee-section input[type="date"],
+.employee-section select {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.employee-section input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.employee-section input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+.employee-section table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.employee-section table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.employee-section table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
 }

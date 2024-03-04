@@ -33,8 +33,10 @@ function EmployeeSearch() {
     return (
         <section id="employee-search" className="employee-section">
             <h2>Search:</h2>
+        <div>
             <input type="text" name="search" id="search" placeholder="Search..." />
-            <input type="button" value="Search" />
+            <input type="submit" value="Add" />
+        </div>
         </section>
     );
 }
@@ -81,14 +83,23 @@ class EmployeeCreate extends React.Component {
             <section id="employee-create" className="employee-section">
                 <h2>Create Employee:</h2>
                 <form name="employeeCreate" onSubmit={this.handleSubmit}>
+                <div>
                     <label htmlFor="firstName">First Name:</label>
                     <input type="text" id="firstName" name="firstName" />
+                </div>
+                <div>
                     <label htmlFor="lastName">Last Name:</label>
                     <input type="text" id="lastName" name="lastName" />
+                </div>
+            <div>
                     <label htmlFor="age">Age:</label>
                     <input type="text" id="age" name="age" required />
+</div>
+            <div>
                     <label htmlFor="dateOfJoining">Date Of Joining:</label>
                     <input type="date" id="dateOfJoining" name="dateOfJoining" required />
+</div>
+            <div>
                     <label htmlFor="title">Title:</label>
                     <select name="title" id="title">
                         <option value="Employee">Employee</option>
@@ -96,6 +107,8 @@ class EmployeeCreate extends React.Component {
                         <option value="Director">Director</option>
                         <option value="VP">VP</option>
                     </select>
+</div>
+            <div>
                     <label htmlFor="department">Department:</label>
                     <select name="department" id="department">
                         <option value="IT">IT</option>
@@ -103,6 +116,8 @@ class EmployeeCreate extends React.Component {
                         <option value="Marketing">Marketing</option>
                         <option value="Engineering">Engineering</option>
                     </select>
+</div>
+            <div>
                     <label htmlFor="employeeType">employeeType:</label>
                     <select name="employeeType" id="employeeType">
                         <option value="FullTime">FullTime</option>
@@ -110,6 +125,7 @@ class EmployeeCreate extends React.Component {
                         <option value="Contract">Contract</option>
                         <option value="Seasonal">Seasonal</option>
                     </select>
+</div>
                     <input type="submit" value="Add" />
                 </form>
             </section>
@@ -183,7 +199,6 @@ class EmployeeDirectory extends React.Component {
                     <h1>Employee Management System</h1>
                 </div>
                 <EmployeeSearch />
-                <hr />
                 <EmployeeTable employees={this.state.employees} />
                 <EmployeeCreate createEmployee={this.createEmployee} />
             </main>
