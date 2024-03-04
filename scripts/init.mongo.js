@@ -20,7 +20,7 @@ const employeesDB = [
         id: 2, firstName: 'Deepak', lastName: 'Thagunna', age: 23, dateOfJoining: new Date(), title: 'VP',
         department: 'IT', employeeType: "PartTime", currentStatus: false,
     },
-    ];
+];
 
 db.employees.insertMany(employeesDB);
 const count = db.employees.countDocuments()

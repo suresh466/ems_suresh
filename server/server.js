@@ -39,7 +39,7 @@ const resolvers = {
 
 async function employeeCreate(_, { employee }) {
   employeeValidate(employee);
-  
+
   employee.id = await getNextSequence('employees');
 
   const result = await db.collection('employees').insertOne(employee);
