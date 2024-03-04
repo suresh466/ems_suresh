@@ -5,22 +5,22 @@ type Employee {
     id: Int!
     firstName: String!
     lastName: String!
-    age: Int
+    age: Int!
     dateOfJoining: GraphQLDate
-    title: TitleType
-    department: DepartmentType
-    employeeType: EmployeeTypeType
-    currentStatus: Boolean
+    title: TitleType!
+    department: DepartmentType!
+    employeeType: EmployeeTypeType!
+    currentStatus: Boolean!
 }
 
 input EmployeeInputs {
     firstName: String!
     lastName: String!
-    age: Int
+    age: Int!
     dateOfJoining: GraphQLDate
-    title: TitleType
-    department: DepartmentType
-    employeeType: EmployeeTypeType
+    title: TitleType!
+    department: DepartmentType!
+    employeeType: EmployeeTypeType!
     currentStatus: Boolean = true
 }
 
@@ -51,5 +51,5 @@ type Query {
 }
 
 type Mutation {
-    employeeCreate(employee: EmployeeInputs): Employee!
+    employeeCreate(employee: EmployeeInputs!): Employee!
 }
