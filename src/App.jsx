@@ -67,6 +67,12 @@ class EmployeeCreate extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const form = document.forms.employeeCreate;
+        // check if age is a number
+        if (isNaN(form.age.value)) {
+            alert('Age must be a number');
+            form.age.value = '';
+            return;
+        }
         const employee = {
             firstName: form.firstName.value.trim(), lastName: form.lastName.value.trim(),
             age: parseInt(form.age.value), dateOfJoining: form.dateOfJoining.value,
