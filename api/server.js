@@ -1,10 +1,12 @@
-const express = require("express");
 const fs = require("fs");
+require("dotenv").config();
+// if wish to use sample env file, use the below line
+//require("dotenv").config({ path: "sample.env" });
+const express = require("express");
 const { ApolloServer, UserInputError } = require("apollo-server-express");
 const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
 
 const url =
 	process.env.DB_URL ||
@@ -106,7 +108,11 @@ async function startServer() {
 	});
 
 	await server.start();
-	server.applyMiddleware({ app, path: "/graphql" });
+
+	const enableCors = (process.env.ENABLE_CORS || "true") == "true";
+	console.log("CORS setting:", enableCors);
+	server.applyMiddleware({ app, path: "/graphql", cors: enableCors });
+
 	await connectToDb();
 
 	app.listen(port, () => console.log(`API server is running on port ${port}`));
