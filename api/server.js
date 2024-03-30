@@ -4,8 +4,10 @@ const { ApolloServer, UserInputError } = require("apollo-server-express");
 const { GraphQLScalarType } = require("graphql");
 const { Kind } = require("graphql/language");
 const { MongoClient } = require("mongodb");
+require("dotenv").config();
 
 const url =
+	process.env.DB_URL ||
 	"mongodb+srv://sthagunna6660-03:passwordadvfs@cluster3.ytit3gj.mongodb.net/?retryWrites=true&w=majority&appName=cluster3";
 
 let db;
@@ -91,7 +93,7 @@ function employeeValidate(employee) {
 }
 
 async function startServer() {
-	const port = process.env.PORT || 3000;
+	const port = process.env.API_SERVER_PORT || 3000;
 	const app = express();
 
 	const server = new ApolloServer({
@@ -111,4 +113,3 @@ async function startServer() {
 }
 
 startServer().catch((error) => console.error(error));
-

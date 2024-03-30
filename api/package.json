@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon -e js,graphql server.js",
+    "start": "nodemon -e js,graphql -w . -w .env server.js",
     "compile": "babel src --out-dir public",
     "watch": "babel src --out-dir public --watch --verbose"
   },
@@ -19,6 +19,7 @@
     "mongodb": "^6.3.0"
   },
   "devDependencies": {
+    "dotenv": "^16.4.5",
     "nodemon": "^3.0.3"
   }
 }
