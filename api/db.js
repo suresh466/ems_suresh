@@ -17,7 +17,7 @@ function getDb() {
 }
 
 async function getNextSequence(name) {
-	const result = await db
+	const result = await dbConnection
 		.collection("counters")
 		.findOneAndUpdate(
 			{ _id: name },
