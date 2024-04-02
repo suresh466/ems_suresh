@@ -1,3 +1,5 @@
+import React from "react";
+
 export class EmployeeCreate extends React.Component {
 	constructor() {
 		super();

@@ -1,3 +1,5 @@
+import React from "react";
+
 export function EmployeeSearch() {
 	return (
 		<section id="employee-search" className="employee-section">
