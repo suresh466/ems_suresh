@@ -1,4 +1,5 @@
 node_modules
 ui/public/*.js
 ui/public/*.txt
+ui/public/*.map
 package-lock.json
