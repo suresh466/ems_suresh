@@ -13,6 +13,9 @@ function EmployeeRow(props) {
 			<td>{employee.department}</td>
 			<td>{employee.employeeType}</td>
 			<td>{employee.currentStatus ? "1" : "0"}</td>
+			<td>
+				<a href={`/#/edit/${employee.id}`}>Edit</a>
+			</td>
 		</tr>
 	);
 }
@@ -35,6 +38,7 @@ export default function EmployeeTable(props) {
 						<th>Department</th>
 						<th>Employee Type</th>
 						<th>Current Status</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>{employeeRows}</tbody>
