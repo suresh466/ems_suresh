@@ -1,18 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function EmployeeFilter() {
-	return (
-		<div>
-			<Link to="/employeedirectory">All Employees</Link>
-			{" | "}
-			<Link to="/employeedirectory?employeeType=FullTime">
-				FullTime Employees
-			</Link>
-			{" | "}
-			<Link to="/employeedirectory?employeeType=PartTime">
-				PartTime Employees
-			</Link>
-		</div>
-	);
+class EmployeeFilter extends React.Component {
+	constructor() {
+		super();
+		this.onChangeEmployeeType = this.onChangeEmployeeType.bind(this);
+	}
+
+	onChangeEmployeeType(e) {
+		const employeeType = e.target.value;
+		const { navigate } = this.props;
+		const search = employeeType ? `?employeeType=${employeeType}` : "";
+		navigate(`/employeedirectory${search}`);
+	}
+
+	render() {
+		return (
+			<div>
+				Employee Type:{" "}
+				<select onChange={this.onChangeEmployeeType}>
+					<option value="">(All)</option>
+					<option value="FullTime">FullTime</option>
+					<option value="PartTime">PartTime</option>
+				</select>
+			</div>
+		);
+	}
 }
+
+function EmployeeFilterWithLocation() {
+	const navigate = useNavigate();
+	return <EmployeeFilter navigate={navigate} />;
+}
+
+export default EmployeeFilterWithLocation;
