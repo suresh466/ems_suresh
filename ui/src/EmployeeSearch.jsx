@@ -1,6 +1,6 @@
 import React from "react";
 
-export function EmployeeSearch() {
+export default function EmployeeSearch() {
 	return (
 		<section id="employee-search" className="employee-section">
 			<h2>Search:</h2>

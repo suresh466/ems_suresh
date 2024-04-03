@@ -1,6 +1,6 @@
 import React from "react";
 
-export class EmployeeCreate extends React.Component {
+export default class EmployeeCreate extends React.Component {
 	constructor() {
 		super();
 		this.handleSubmit = this.handleSubmit.bind(this);

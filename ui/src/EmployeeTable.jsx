@@ -1,6 +1,6 @@
 import React from "react";
 
-export function EmployeeRow(props) {
+function EmployeeRow(props) {
 	const employee = props.employee;
 
 	return (
@@ -17,7 +17,7 @@ export function EmployeeRow(props) {
 	);
 }
 
-export function EmployeeTable(props) {
+export default function EmployeeTable(props) {
 	const employeeRows = props.employees.map((employee) => (
 		<EmployeeRow key={employee.id} employee={employee} />
 	));

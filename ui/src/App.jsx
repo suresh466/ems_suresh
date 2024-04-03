@@ -1,12 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
-// compatibility libs
 import "babel-polyfill";
 import "whatwg-fetch";
 
-import { EmployeeDirectory } from "./EmployeeDirectory.jsx";
+import React from "react";
+import ReactDOM from "react-dom";
+import { HashRouter as Router } from "react-router-dom";
 
-const element = <EmployeeDirectory />;
+import Page from "./Page.jsx";
+
+const element = (
+	<Router>
+		<Page />
+	</Router>
+);
 
 ReactDOM.render(element, document.getElementById("content"));

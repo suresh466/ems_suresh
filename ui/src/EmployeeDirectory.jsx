@@ -1,11 +1,11 @@
 import React from "react";
 
-import { EmployeeCreate } from "./EmployeeCreate.jsx";
-import { EmployeeSearch } from "./EmployeeSearch.jsx";
-import { EmployeeTable } from "./EmployeeTable.jsx";
+import EmployeeCreate from "./EmployeeCreate.jsx";
+import EmployeeSearch from "./EmployeeSearch.jsx";
+import EmployeeTable from "./EmployeeTable.jsx";
 import graphQLFetch from "./graphQLFetch.js";
 
-export class EmployeeDirectory extends React.Component {
+export default class EmployeeDirectory extends React.Component {
 	constructor() {
 		super();
 		this.state = { employees: [] };
