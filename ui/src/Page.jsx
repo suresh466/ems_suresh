@@ -7,7 +7,7 @@ function NavBar() {
 		<nav>
 			<a href="/">Home</a>
 			{" | "}
-			<a href="/#/employees">Employee Directory</a>
+			<a href="/#/employeeDirectory">Employee Directory</a>
 			{" | "}
 			<a href="/#/detail">Employee Detail</a>
 		</nav>
