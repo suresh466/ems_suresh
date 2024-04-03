@@ -1,3 +1,4 @@
+const { UserInputError } = require("apollo-server-express");
 const db = require("./db.js");
 // if (!db) {
 // 	throw new Error("Database connection not established");
@@ -19,16 +20,19 @@ async function employeeCreate(_, { employee }) {
 	return savedIssue;
 }
 
-async function employeeList() {
+async function employeeList(_, { employeeType }) {
 	const dbConnection = db.getDb();
 	if (!dbConnection) {
 		console.error("Database connection not established");
 		throw new Error("Database connection not established");
 	}
 
+	// filter by employee type
+	const filter = {};
+	if (employeeType) filter.employeeType = employeeType;
 	const employees = await dbConnection
 		.collection("employees")
-		.find({})
+		.find(filter)
 		.toArray();
 	return employees;
 }

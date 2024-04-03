@@ -47,7 +47,7 @@ enum EmployeeTypeType {
 }
 
 type Query {
-    employeeList: [Employee!]!
+    employeeList(employeeType: EmployeeTypeType): [Employee!]!
 }
 
 type Mutation {
