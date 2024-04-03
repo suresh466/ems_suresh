@@ -1,17 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function EmployeeFilter() {
 	return (
 		<div>
-			<a href="/#/employeedirectory">All Employees</a>
+			<Link to="/employeedirectory">All Employees</Link>
 			{" | "}
-			<a href="/#/employeedirectory?employeeType=FullTime">
+			<Link to="/employeedirectory?employeeType=FullTime">
 				FullTime Employees
-			</a>
+			</Link>
 			{" | "}
-			<a href="/#/employeedirectory?employeeType=PartTime">
+			<Link to="/employeedirectory?employeeType=PartTime">
 				PartTime Employees
-			</a>
+			</Link>
 		</div>
 	);
 }

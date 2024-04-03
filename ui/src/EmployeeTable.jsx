@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function EmployeeRow(props) {
 	const employee = props.employee;
@@ -14,7 +15,7 @@ function EmployeeRow(props) {
 			<td>{employee.employeeType}</td>
 			<td>{employee.currentStatus ? "1" : "0"}</td>
 			<td>
-				<a href={`/#/edit/${employee.id}`}>Edit</a>
+				<Link to={`/edit/${employee.id}`}>Edit</Link>
 			</td>
 		</tr>
 	);

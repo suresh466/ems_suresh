@@ -70,3 +70,7 @@ td {
     background-color: #4CAF50;
     color: white;
 }
+
+a.active {
+    background-color: #D8D8F5;
+}
