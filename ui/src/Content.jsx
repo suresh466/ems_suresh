@@ -12,8 +12,8 @@ export default function Content() {
 		<Routes>
 			<Route path="/" element={<Navigate to="/employeeDirectory" replace />} />
 			<Route path="/employeeDirectory" element={<EmployeeDirectory />} />
-			<Route path="/detail" element={<EmployeeDetail />} />
 			<Route path="/edit/:id" element={<EmployeeEdit />} />
+			<Route path="/view/:id" element={<EmployeeDetail />} />
 			<Route path="*" element={<NotFound />} />
 		</Routes>
 	);

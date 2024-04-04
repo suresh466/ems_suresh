@@ -28,9 +28,9 @@ class EmployeeFilter extends React.Component {
 	}
 }
 
-function EmployeeFilterWithLocation() {
+function EmployeeFilterWithNavigate() {
 	const navigate = useNavigate();
 	return <EmployeeFilter navigate={navigate} />;
 }
 
-export default EmployeeFilterWithLocation;
+export default EmployeeFilterWithNavigate;

@@ -37,6 +37,20 @@ async function employeeList(_, { employeeType }) {
 	return employees;
 }
 
+async function employeeDetail(_, { id }) {
+	const dbConnection = db.getDb();
+	if (!dbConnection) {
+		console.error("Database connection not established");
+		throw new Error("Database connection not established");
+	}
+
+	// get employee details by id
+	const employee = await dbConnection.collection("employees").findOne({ id });
+	console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+	console.log(employee);
+	return employee;
+}
+
 function employeeValidate(employee) {
 	const errors = [];
 	if (employee.firstName === "") {
@@ -54,4 +68,4 @@ function employeeValidate(employee) {
 	}
 }
 
-module.exports = { employeeCreate, employeeList };
+module.exports = { employeeCreate, employeeList, employeeDetail };

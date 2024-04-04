@@ -15,6 +15,8 @@ function EmployeeRow(props) {
 			<td>{employee.employeeType}</td>
 			<td>{employee.currentStatus ? "1" : "0"}</td>
 			<td>
+				<Link to={`/view/${employee.id}`}>View</Link>
+				{" | "}
 				<Link to={`/edit/${employee.id}`}>Edit</Link>
 			</td>
 		</tr>

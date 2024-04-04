@@ -6,15 +6,19 @@ const { ApolloServer } = require("apollo-server-express");
 
 const GraphQLDate = require("./graphql_date.js");
 const typeDefs = fs.readFileSync("schema.graphql", "utf-8");
-
-const employees = require("./employees.js");
+const {
+	employeeList,
+	employeeDetail,
+	employeeCreate,
+} = require("./employees.js");
 
 const resolvers = {
 	Query: {
-		employeeList: employees.employeeList,
+		employeeList: employeeList,
+		employeeDetail: employeeDetail,
 	},
 	Mutation: {
-		employeeCreate: employees.employeeCreate,
+		employeeCreate: employeeCreate,
 	},
 	GraphQLDate: GraphQLDate,
 };

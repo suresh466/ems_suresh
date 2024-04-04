@@ -40,7 +40,7 @@ class EmployeeDirectory extends React.Component {
 		if (params.get("employeeType"))
 			vars.employeeType = params.get("employeeType");
 
-		const query = `query issueList($employeeType: EmployeeTypeType){
+		const query = `query employeeList($employeeType: EmployeeTypeType){
             employeeList(employeeType: $employeeType){
                 id firstName lastName age dateOfJoining title department employeeType currentStatus
             }
