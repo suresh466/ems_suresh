@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import URLSearchParams from "url-search-params";
 
 class EmployeeFilter extends React.Component {
 	constructor() {
@@ -15,10 +16,17 @@ class EmployeeFilter extends React.Component {
 	}
 
 	render() {
+		const {
+			location: { search },
+		} = this.props;
+		const params = new URLSearchParams(search);
 		return (
 			<div>
 				Employee Type:{" "}
-				<select onChange={this.onChangeEmployeeType}>
+				<select
+					value={params.get("employeeType") || ""}
+					onChange={this.onChangeEmployeeType}
+				>
 					<option value="">(All)</option>
 					<option value="FullTime">FullTime</option>
 					<option value="PartTime">PartTime</option>
@@ -28,9 +36,10 @@ class EmployeeFilter extends React.Component {
 	}
 }
 
-function EmployeeFilterWithNavigate() {
+function EmployeeFilterWithNavigateAndLocation() {
 	const navigate = useNavigate();
-	return <EmployeeFilter navigate={navigate} />;
+	const location = useLocation();
+	return <EmployeeFilter navigate={navigate} location={location} />;
 }
 
-export default EmployeeFilterWithNavigate;
+export default EmployeeFilterWithNavigateAndLocation;
