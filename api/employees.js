@@ -20,6 +20,28 @@ async function employeeCreate(_, { employee }) {
 	return savedIssue;
 }
 
+async function employeeUpdate(_, { id, changes }) {
+	const dbConnection = db.getDb();
+	if (!dbConnection) {
+		console.error("Database connection not established");
+		throw new Error("Database connection not established");
+	}
+
+	if (changes.title || changes.department || changes.currentStatus) {
+		const employee = await dbConnection.collection("employees").findOne({ id });
+		Object.assign(employee, changes);
+		employeeValidate(employee);
+	}
+
+	await dbConnection
+		.collection("employees")
+		.updateOne({ id }, { $set: changes });
+	const savedEmployee = await dbConnection
+		.collection("employees")
+		.findOne({ id });
+	return savedEmployee;
+}
+
 async function employeeList(_, { employeeType }) {
 	const dbConnection = db.getDb();
 	if (!dbConnection) {
@@ -68,4 +90,9 @@ function employeeValidate(employee) {
 	}
 }
 
-module.exports = { employeeCreate, employeeList, employeeDetail };
+module.exports = {
+	employeeCreate,
+	employeeList,
+	employeeDetail,
+	employeeUpdate,
+};

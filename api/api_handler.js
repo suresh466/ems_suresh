@@ -10,6 +10,7 @@ const {
 	employeeList,
 	employeeDetail,
 	employeeCreate,
+	employeeUpdate,
 } = require("./employees.js");
 
 const resolvers = {
@@ -19,6 +20,7 @@ const resolvers = {
 	},
 	Mutation: {
 		employeeCreate: employeeCreate,
+		employeeUpdate: employeeUpdate,
 	},
 	GraphQLDate: GraphQLDate,
 };

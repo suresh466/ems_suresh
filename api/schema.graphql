@@ -24,6 +24,12 @@ input EmployeeInputs {
     currentStatus: Boolean = true
 }
 
+input EmployeeUpdateInputs {
+    title: TitleType
+    department: DepartmentType
+    currentStatus: Boolean
+}
+
 enum TitleType {
     Employee
     Manager
@@ -53,4 +59,5 @@ type Query {
 
 type Mutation {
     employeeCreate(employee: EmployeeInputs!): Employee!
+    employeeUpdate(id: Int!, changes: EmployeeUpdateInputs): Employee!
 }
