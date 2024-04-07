@@ -40,7 +40,7 @@ function EmployeeDetail() {
 	if (!employee) return null;
 
 	return (
-		<div>
+		<div className="employee-detail">
 			<h1>Employee Detail {employee.id}</h1>
 			<p>
 				{employee.firstName} {employee.lastName} ({employee.employeeType})
