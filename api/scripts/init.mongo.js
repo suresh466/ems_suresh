@@ -10,21 +10,37 @@
  */
 
 db.employees.deleteMany({});
+db.deleted_employees.deleteMany({});
 
 const employeesDB = [
-    {
-        id: 1, firstName: 'Suresh', lastName: 'Thagunna', age: 25, dateOfJoining: new Date(), title: 'Manager',
-        department: 'IT', employeeType: "FullTime", currentStatus: true,
-    },
-    {
-        id: 2, firstName: 'Deepak', lastName: 'Thagunna', age: 23, dateOfJoining: new Date(), title: 'VP',
-        department: 'IT', employeeType: "PartTime", currentStatus: false,
-    },
+	{
+		id: 1,
+		firstName: "Suresh",
+		lastName: "Thagunna",
+		age: 25,
+		dateOfJoining: new Date(),
+		title: "Manager",
+		department: "IT",
+		employeeType: "FullTime",
+		currentStatus: true,
+	},
+	{
+		id: 2,
+		firstName: "Deepak",
+		lastName: "Thagunna",
+		age: 23,
+		dateOfJoining: new Date(),
+		title: "VP",
+		department: "IT",
+		employeeType: "PartTime",
+		currentStatus: false,
+	},
 ];
 
 db.employees.insertMany(employeesDB);
-const count = db.employees.countDocuments()
-print('Inserted', count, 'employees');
+const count = db.employees.countDocuments();
+print("Inserted", count, "employees");
 
-db.counters.deleteOne({ _id: 'employees' });
-db.counters.insertOne({ _id: 'employees', current: count });
+db.counters.deleteOne({ _id: "employees" });
+db.counters.insertOne({ _id: "employees", current: count });
+

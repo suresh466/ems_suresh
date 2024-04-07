@@ -1,9 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function EmployeeRow(props) {
-	const employee = props.employee;
-
+function EmployeeRow({ employee, deleteEmployee }) {
 	return (
 		<tr>
 			<td>{employee.firstName}</td>
@@ -18,14 +16,27 @@ function EmployeeRow(props) {
 				<Link to={`/view/${employee.id}`}>View</Link>
 				{" | "}
 				<Link to={`/edit/${employee.id}`}>Edit</Link>
+				{" | "}
+				<button
+					type="button"
+					onClick={() => {
+						deleteEmployee(employee.id);
+					}}
+				>
+					Delete
+				</button>
 			</td>
 		</tr>
 	);
 }
 
-export default function EmployeeTable(props) {
-	const employeeRows = props.employees.map((employee) => (
-		<EmployeeRow key={employee.id} employee={employee} />
+export default function EmployeeTable({ employees, deleteEmployee }) {
+	const employeeRows = employees.map((employee) => (
+		<EmployeeRow
+			key={employee.id}
+			employee={employee}
+			deleteEmployee={deleteEmployee}
+		/>
 	));
 
 	return (

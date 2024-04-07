@@ -13,6 +13,7 @@ class EmployeeDirectory extends React.Component {
 		super();
 		this.state = { employees: [] };
 		this.createEmployee = this.createEmployee.bind(this);
+		this.deleteEmployee = this.deleteEmployee.bind(this);
 	}
 
 	componentDidMount() {
@@ -61,6 +62,18 @@ class EmployeeDirectory extends React.Component {
 		if (data) this.loadData();
 	}
 
+	async deleteEmployee(id) {
+		const query = `mutation employeeDelete($id: Int!) {
+            employeeDelete(id: $id)
+        }`;
+
+		const data = await graphQLFetch(query, { id });
+		if (data) {
+			this.loadData();
+			alert("Employee deleted successfully");
+		}
+	}
+
 	render() {
 		return (
 			<main id="employee-directory">
@@ -69,7 +82,11 @@ class EmployeeDirectory extends React.Component {
 				</div>
 				<EmployeeSearch />
 				<EmployeeFilter />
-				<EmployeeTable employees={this.state.employees} />
+				<hr />
+				<EmployeeTable
+					employees={this.state.employees}
+					deleteEmployee={this.deleteEmployee}
+				/>
 				<EmployeeCreate createEmployee={this.createEmployee} />
 			</main>
 		);

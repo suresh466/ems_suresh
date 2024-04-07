@@ -1,8 +1,6 @@
 const { UserInputError } = require("apollo-server-express");
 const db = require("./db.js");
-// if (!db) {
-// 	throw new Error("Database connection not established");
-// }
+
 async function employeeCreate(_, { employee }) {
 	employeeValidate(employee);
 	const dbConnection = db.getDb();
@@ -14,10 +12,10 @@ async function employeeCreate(_, { employee }) {
 	employee.id = await db.getNextSequence("employees");
 
 	const result = await dbConnection.collection("employees").insertOne(employee);
-	const savedIssue = await dbConnection
+	const savedEmployee = await dbConnection
 		.collection("employees")
 		.findOne({ _id: result.insertedId });
-	return savedIssue;
+	return savedEmployee;
 }
 
 async function employeeUpdate(_, { id, changes }) {
@@ -40,6 +38,27 @@ async function employeeUpdate(_, { id, changes }) {
 		.collection("employees")
 		.findOne({ id });
 	return savedEmployee;
+}
+
+async function employeeDelete(_, { id }) {
+	const dbConnection = db.getDb();
+	if (!dbConnection) {
+		console.error("Database connection not established");
+		throw new Error("Database connection not established");
+	}
+
+	const employee = await dbConnection.collection("employees").findOne({ id });
+	if (!employee) return false;
+	employee.deleted = new Date();
+
+	let result = await dbConnection
+		.collection("deleted_employees")
+		.insertOne(employee);
+	if (result.insertedId) {
+		result = await dbConnection.collection("employees").deleteOne({ id });
+		return result.deletedCount === 1;
+	}
+	return false;
 }
 
 async function employeeList(_, { employeeType }) {
@@ -95,4 +114,5 @@ module.exports = {
 	employeeList,
 	employeeDetail,
 	employeeUpdate,
+	employeeDelete,
 };

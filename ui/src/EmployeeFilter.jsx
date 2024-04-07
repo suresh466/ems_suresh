@@ -30,6 +30,8 @@ class EmployeeFilter extends React.Component {
 					<option value="">(All)</option>
 					<option value="FullTime">FullTime</option>
 					<option value="PartTime">PartTime</option>
+					<option value="Contract">Contract</option>
+					<option value="Seasonal">Seasonal</option>
 				</select>
 			</div>
 		);
